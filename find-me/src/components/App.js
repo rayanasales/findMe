@@ -1,5 +1,6 @@
 import React from 'react';
 import './../assets/css/App.css';
+import GooglePlaces from './GooglePlaces';
 
 class App extends React.Component {
 
@@ -7,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p> App componentizado </p>
+          <GooglePlaces />
         </header>
       </div>
     );
