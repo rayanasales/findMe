@@ -1,10 +1,3 @@
-#map {
-    height: 30%;
-}
-
-/* Optional: Makes the sample page fill the window. */
-html, body {
-    height: 30%;
-    margin: 0;
-    padding: 0;
+.icon-finder {
+    max-width: 5px;
 }

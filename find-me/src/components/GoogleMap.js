@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import iconFinder from "./../assets/images/icon-finder-google-small-red.png";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const MarkerComponent = ({ text }) => <img style={{ maxWidth: "25px" }} src={iconFinder} title={text} />;
 
 class GoogleMap extends Component {
     static defaultProps = {
@@ -9,7 +10,7 @@ class GoogleMap extends Component {
             lat: -8.05,
             lng: -34.88
         },
-        zoom: 13
+        zoom: 15
     };
 
     renderMarkers() {
@@ -21,7 +22,7 @@ class GoogleMap extends Component {
 
         return (
             markers.map((m, key) =>
-                <AnyReactComponent
+                <MarkerComponent
                     key={key}
                     lat={m.coordinates.lat}
                     lng={m.coordinates.lng}
@@ -40,7 +41,7 @@ class GoogleMap extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >
-                    { this.renderMarkers() }
+                    {this.renderMarkers()}
                 </GoogleMapReact>
             </div>
         );
