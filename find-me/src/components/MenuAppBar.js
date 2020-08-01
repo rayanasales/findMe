@@ -6,13 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 const styles = theme => ({
     grow: {
@@ -77,21 +74,9 @@ class MenuAppBar extends Component {
     constructor() {
         super();
         this.state = {
-            isMenuOpen: false,
             anchorEl: null
         }
-
-        this.handleProfileMenuOpen = this.handleProfileMenuOpen.bind(this);
-        this.handleMenuClose = this.handleMenuClose.bind(this);
         this.keySearchPress = this.keySearchPress.bind(this);
-    }
-
-    handleProfileMenuOpen(event) {
-        this.setState({ isMenuOpen: event.currentTarget });
-    }
-
-    handleMenuClose() {
-        this.setState({ anchorEl: null, isMenuOpen: false });
     }
 
     keySearchPress(e) {
@@ -100,26 +85,12 @@ class MenuAppBar extends Component {
         }
     }
 
-    render() {
-        const { isMenuOpen, anchorEl } = this.state;
-        const { classes } = this.props;
+    eventTemp(e) {
+        alert("evento temporário");
+    }
 
-        var menuId = 'primary-search-account-menu';
-        var renderMenu = (
-            <Menu
-                anchorEl={anchorEl}
-                id={menuId}
-                keepMounted
-                open={isMenuOpen}
-                onClose={this.handleMenuClose}
-                getContentAnchorEl={null}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            >
-                <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-            </Menu>
-        );
+    render() {
+        const { classes } = this.props;
 
         return (
             <div className={classes.grow}>
@@ -153,30 +124,19 @@ class MenuAppBar extends Component {
                         </div>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
-                            <IconButton aria-label="show 4 new mails" color="inherit">
-                                <Badge badgeContent={4} color="secondary">
-                                    <MailIcon />
+                            <IconButton aria-label="show 0 new mails" color="inherit" onClick={this.eventTemp}>
+                                <Badge badgeContent={0} color="secondary">
+                                    <PeopleAltIcon />
                                 </Badge>
                             </IconButton>
-                            <IconButton aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={17} color="secondary">
-                                    <NotificationsIcon />
+                            <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.eventTemp}>
+                                <Badge badgeContent={0} color="secondary">
+                                    <PowerSettingsNewIcon />
                                 </Badge>
-                            </IconButton>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={this.handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
                             </IconButton>
                         </div>
                     </Toolbar>
                 </AppBar>
-                {renderMenu}
             </div>
         );
     }
