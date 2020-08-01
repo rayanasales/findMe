@@ -12,27 +12,26 @@ class GoogleMap extends Component {
         zoom: 13
     };
 
-    // renderMarkers() {
-    //     const { markers } = this.props;
-
-    //     if (markers.length === 0) {
-    //         return;
-    //     }
-
-    //     return (
-    //         markers.forEach(m => {
-    //             <AnyReactComponent
-    //                 lat={m.coordinates.lat}
-    //                 lng={m.coordinates.lng}
-    //                 text={m.name}
-    //             />
-    //         })
-    //     );
-    // }
-
-    render() {
+    renderMarkers() {
         const { markers } = this.props;
 
+        if (markers.length === 0) {
+            return;
+        }
+
+        return (
+            markers.map((m, key) =>
+                <AnyReactComponent
+                    key={key}
+                    lat={m.coordinates.lat}
+                    lng={m.coordinates.lng}
+                    text={m.name}
+                />
+            )
+        );
+    }
+
+    render() {
         return (
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
@@ -41,16 +40,7 @@ class GoogleMap extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >
-                    {
-                        markers.map((m, key) =>
-                            <AnyReactComponent
-                                key={key}
-                                lat={m.coordinates.lat}
-                                lng={m.coordinates.lng}
-                                text={m.name}
-                            />
-                        )
-                    }
+                    { this.renderMarkers() }
                 </GoogleMapReact>
             </div>
         );
