@@ -30,7 +30,9 @@ class App extends React.Component {
         name: d.name,
         icon: d.icon,
         rating: d.rating,
-        types: d.types
+        types: d.types,
+        vicinity: d.vicinity,
+        business_status: d.business_status.toLowerCase()
       });
     });
 
