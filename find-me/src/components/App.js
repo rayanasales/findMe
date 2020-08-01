@@ -1,6 +1,7 @@
 import React from 'react';
 import './../assets/css/App.css';
 import Api from "./../util/api";
+import ListPlaces from "./ListPlaces";
 
 class App extends React.Component {
 
@@ -29,7 +30,7 @@ class App extends React.Component {
         name: d.name,
         icon: d.icon,
         rating: d.rating,
-        types: d.types[0]
+        types: d.types
       });
     });
 
@@ -39,16 +40,13 @@ class App extends React.Component {
   render() {
     const { nearbyPlaces } = this.state;
 
-    var content = nearbyPlaces.length === 0 ? <span>carregando...</span> :
-      nearbyPlaces.map((data, key) =>
-        <div key={key}>{data.name}</div>
-      );
+    var content = nearbyPlaces.length === 0 ? <span>carregando...</span> : <ListPlaces places={nearbyPlaces} />;
 
     return (
       <div className="App">
-        <header className="App-header">
+        <div>
           {content}
-        </header>
+        </div>
       </div>
     );
   }
