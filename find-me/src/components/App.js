@@ -10,7 +10,6 @@ const centerMap = {
   lgn: -34.8813
 };
 const radius = 2 * 1000; // 2km
-const placeType = "gym"; // https://developers.google.com/places/web-service/supported_types
 
 class App extends React.Component {
 
@@ -22,6 +21,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.nearbySearchGoogle("bank"); // https://developers.google.com/places/web-service/supported_types
+  }
+
+  nearbySearchGoogle(placeType) {
     Api.nearbySearch(centerMap.lat, centerMap.lgn, radius, placeType).then((dataJson) => {
       return dataJson.json().then((data) => {
         this.formatData(data);
