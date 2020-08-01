@@ -22,6 +22,16 @@ class App extends React.Component {
     });
   }
 
+  formatTypes(types) {
+    var formatedTypes = "";
+
+    types.forEach(function (t) {
+      formatedTypes += "#" + t + " ";
+    });
+
+    return formatedTypes;
+  }
+
   formatData(data) {
     var dataFormated = [];
 
@@ -30,9 +40,8 @@ class App extends React.Component {
         name: d.name,
         icon: d.icon,
         rating: d.rating,
-        types: d.types,
-        vicinity: d.vicinity,
-        business_status: d.business_status.toLowerCase()
+        tags: this.formatTypes(d.types),
+        vicinity: d.vicinity
       });
     });
 

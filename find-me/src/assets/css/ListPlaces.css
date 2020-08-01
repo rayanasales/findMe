@@ -22,3 +22,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.place-vicinity {
+    max-width: 350px;
+    margin: 10px;
+}

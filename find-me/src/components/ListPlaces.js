@@ -13,8 +13,17 @@ class ListPlaces extends React.Component {
             <div key={key} className="place-card">
               <div className="place-info">
                 <h3 className="place-name label" title={p.name}>{p.name}</h3>
-                <div className="place-rating label" title={p.rating}>{p.rating}</div>
-                <div className="place-type label" title={p.types.join()}>{p.types.join()}</div>
+                <div className="place-vicinity" title={p.vicinity}>
+                  <span>Endereço: </span>
+                  {p.vicinity}
+                </div>
+                {
+                  p.rating ? <div className="place-rating label" title={p.rating}>
+                    <span>Avaliação média: </span>
+                    {p.rating}
+                  </div> : null
+                }
+                <div className="place-type label" title={p.tags}>{p.tags}</div>
               </div>
             </div>
           )
