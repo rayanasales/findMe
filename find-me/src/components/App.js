@@ -49,7 +49,8 @@ class App extends React.Component {
         icon: d.icon,
         rating: d.rating,
         tags: this.formatTypes(d.types),
-        vicinity: d.vicinity
+        vicinity: d.vicinity,
+        coordinates: d.geometry.location
       });
     });
 

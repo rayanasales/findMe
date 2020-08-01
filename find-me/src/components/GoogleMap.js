@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class GoogleMap extends Component {
     static defaultProps = {
@@ -12,9 +12,25 @@ class GoogleMap extends Component {
         zoom: 13
     };
 
-    render() {
-        const { markers } = this.props;
+    // renderMarkers() {
+    //     const { markers } = this.props;
 
+    //     if (markers.length === 0) {
+    //         return;
+    //     }
+
+    //     return (
+    //         markers.forEach(m => {
+    //             <AnyReactComponent
+    //                 lat={m.coordinates.lat}
+    //                 lng={m.coordinates.lng}
+    //                 text={m.name}
+    //             />
+    //         })
+    //     );
+    // }
+
+    render() {
         return (
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
@@ -23,11 +39,18 @@ class GoogleMap extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >
-                    {/* <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
-                        text="My Marker"
-                    /> */}
+                    {/* {this.renderMarkers()} */}
+
+                    <AnyReactComponent
+                        lat={-8.060483}
+                        lng={-34.88170300000001}
+                        text="Clinica Ser em Terapia"
+                    />
+                    <AnyReactComponent
+                        lat={-8.059391599999998}
+                        lng={-34.8917855}
+                        text="Academia Biodinâmica"
+                    />
                 </GoogleMapReact>
             </div>
         );
