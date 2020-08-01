@@ -63,8 +63,8 @@ class App extends React.Component {
     var content = nearbyPlaces.length === 0 ? <span>carregando...</span> : <ListPlaces places={nearbyPlaces} />;
 
     return (
-      <div className="App">
-        <div>
+      <div className="app">
+        <div className="content">
           {content}
           <GoogleMap markers={nearbyPlaces} />
         </div>
