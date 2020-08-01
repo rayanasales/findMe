@@ -2,7 +2,7 @@ import React from 'react';
 import './../assets/css/App.css';
 import Api from "./../util/api";
 import ListPlaces from "./ListPlaces";
-import SimpleMap from "./SimpleMap";
+import GoogleMap from "./GoogleMap";
 
 class App extends React.Component {
 
@@ -58,7 +58,7 @@ class App extends React.Component {
       <div className="App">
         <div>
           {content}
-          <SimpleMap />
+          <GoogleMap />
         </div>
       </div>
     );
