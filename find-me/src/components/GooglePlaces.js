@@ -6,24 +6,59 @@ const URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?locati
 
 class GooglePlaces extends Component {
 
-    render() {
-        debugger;
+    constructor() {
+        super();
+        this.state = {
+            nearbyPlaces: [],
+            errorMessage: ""
+        }
+    }
 
-        let _fire = fetch(proxyUrl + URL);
+    componentDidMount() {
+        this.nearbySearch();
+    }
 
-        _fire.then((dataJson) => {
+    nearbySearch() {
+        let nearbysearch = fetch(proxyUrl + URL);
+
+        nearbysearch.then((dataJson) => {
             return dataJson.json().then((data) => {
-                debugger;
+                var dataFormated = this.formatData(data);
+                this.setState({ nearbyPlaces: dataFormated });
             })
         }).catch(error => {
-            debugger;
+            this.setState({ errorMessage: "erro ao contatar api" });
         })
+    }
+
+    formatData(data) {
+        var dataFormated = [];
+
+        data.results.forEach(d => {
+            dataFormated.push({
+                name: d.name,
+                icon: d.icon,
+                rating: d.rating,
+                types: d.types[0]
+            });
+        });
+
+        return dataFormated;
+    }
+
+    render() {
+        const { nearbyPlaces } = this.state;
 
         return (
-            <div id="map">teste Component</div>
+            <div id="map">
+                {
+                    nearbyPlaces.map((data, key) =>
+                        <div key={key}>{data.name}</div>
+                    )
+                }
+            </div>
         )
     }
 }
-
 
 export default GooglePlaces;
