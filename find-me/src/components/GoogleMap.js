@@ -31,6 +31,8 @@ class GoogleMap extends Component {
     // }
 
     render() {
+        const { markers } = this.props;
+
         return (
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
@@ -39,18 +41,16 @@ class GoogleMap extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >
-                    {/* {this.renderMarkers()} */}
-
-                    <AnyReactComponent
-                        lat={-8.060483}
-                        lng={-34.88170300000001}
-                        text="Clinica Ser em Terapia"
-                    />
-                    <AnyReactComponent
-                        lat={-8.059391599999998}
-                        lng={-34.8917855}
-                        text="Academia Biodinâmica"
-                    />
+                    {
+                        markers.map((m, key) =>
+                            <AnyReactComponent
+                                key={key}
+                                lat={m.coordinates.lat}
+                                lng={m.coordinates.lng}
+                                text={m.name}
+                            />
+                        )
+                    }
                 </GoogleMapReact>
             </div>
         );
