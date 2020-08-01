@@ -65,7 +65,7 @@ class App extends React.Component {
       <div className="App">
         <div>
           {content}
-          <GoogleMap />
+          <GoogleMap markers={nearbyPlaces} />
         </div>
       </div>
     );
