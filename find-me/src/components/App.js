@@ -9,7 +9,7 @@ const centerMap = {
   lat: -8.05428,
   lgn: -34.8813
 };
-const radius = 2 * 1000; // 2km
+const radius = 5 * 1000; // 2km
 
 class App extends React.Component {
 
@@ -68,7 +68,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <MenuAppBar />
+        <MenuAppBar nearbySearchGoogle={this.nearbySearchGoogle} />
         <div className="content">
           {content}
           <GoogleMap markers={nearbyPlaces} />

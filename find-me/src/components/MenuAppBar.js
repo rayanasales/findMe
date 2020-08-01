@@ -77,11 +77,14 @@ class MenuAppBar extends Component {
             anchorEl: null
         }
         this.keySearchPress = this.keySearchPress.bind(this);
+        this.eventTemp = this.eventTemp.bind(this);
     }
 
     keySearchPress(e) {
+        const { nearbySearchGoogle } = this.props;
+
         if (e.keyCode == 13) {
-            alert("pesquisar por " + e.target.value);
+            nearbySearchGoogle(e.target.value);
         }
     }
 
