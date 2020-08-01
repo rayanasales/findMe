@@ -4,6 +4,13 @@ import Api from "./../util/api";
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 
+const centerMap = {
+  lat: -8.05428,
+  lgn: -34.8813
+};
+const radius = 2 * 1000; // 2km
+const placeType = "gym"; // https://developers.google.com/places/web-service/supported_types
+
 class App extends React.Component {
 
   constructor() {
@@ -14,7 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    Api.nearbySearch(-8.05428, -34.8813, 2 * 1000, "gym").then((dataJson) => {
+    Api.nearbySearch(centerMap.lat, centerMap.lgn, radius, placeType).then((dataJson) => {
       return dataJson.json().then((data) => {
         this.formatData(data);
       })
