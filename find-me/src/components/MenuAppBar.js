@@ -1,5 +1,5 @@
-import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { fade, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,9 +13,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
 
-const useStyles = makeStyles((theme) => ({
+const styles = theme => ({
     grow: {
         flexGrow: 1,
     },
@@ -71,100 +70,116 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
         },
     }
-}));
+});
 
-export default function PrimarySearchAppBar() {
-    const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+class MenuAppBar extends Component {
 
-    const isMenuOpen = Boolean(anchorEl);
+    constructor() {
+        super();
+        this.state = {
+            isMenuOpen: false,
+            anchorEl: null
+        }
 
-    const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+        this.handleProfileMenuOpen = this.handleProfileMenuOpen.bind(this);
+        this.handleMenuClose = this.handleMenuClose.bind(this);
+        this.keySearchPress = this.keySearchPress.bind(this);
+    }
 
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
+    handleProfileMenuOpen(event) {
+        this.setState({ isMenuOpen: event.currentTarget });
+    }
 
-    const keySearchPress = (e) => {
+    handleMenuClose() {
+        this.setState({ anchorEl: null, isMenuOpen: false });
+    }
+
+    keySearchPress(e) {
         if (e.keyCode == 13) {
             alert("pesquisar por " + e.target.value);
         }
-    };
+    }
 
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
+    render() {
+        const { isMenuOpen, anchorEl } = this.state;
+        const { classes } = this.props;
 
-    return (
-        <div className={classes.grow}>
-            <AppBar position="fixed" style={{ background: '#2E3B55' }} >
-                <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Locais em Recife (Pernambuco)
-                    </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Pesquisar local..."
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            onKeyDown={keySearchPress}
-                            // onChange={handleSearchChange}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                    <div className={classes.grow} />
-                    <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+        var menuId = 'primary-search-account-menu';
+        var renderMenu = (
+            <Menu
+                anchorEl={anchorEl}
+                id={menuId}
+                keepMounted
+                open={isMenuOpen}
+                onClose={this.handleMenuClose}
+                getContentAnchorEl={null}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+                <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+                <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+            </Menu>
+        );
+
+        return (
+            <div className={classes.grow}>
+                <AppBar position="fixed" style={{ background: '#2E3B55' }} >
+                    <Toolbar>
                         <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
+                            edge="start"
+                            className={classes.menuButton}
                             color="inherit"
+                            aria-label="open drawer"
                         >
-                            <AccountCircle />
+                            <MenuIcon />
                         </IconButton>
-                    </div>
-                </Toolbar>
-            </AppBar>
-            {renderMenu}
-        </div>
-    );
+                        <Typography className={classes.title} variant="h6" noWrap>
+                            Locais em Recife (Pernambuco)
+                        </Typography>
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Pesquisar local..."
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                onKeyDown={this.keySearchPress}
+                                // onChange={handleSearchChange}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </div>
+                        <div className={classes.grow} />
+                        <div className={classes.sectionDesktop}>
+                            <IconButton aria-label="show 4 new mails" color="inherit">
+                                <Badge badgeContent={4} color="secondary">
+                                    <MailIcon />
+                                </Badge>
+                            </IconButton>
+                            <IconButton aria-label="show 17 new notifications" color="inherit">
+                                <Badge badgeContent={17} color="secondary">
+                                    <NotificationsIcon />
+                                </Badge>
+                            </IconButton>
+                            <IconButton
+                                edge="end"
+                                aria-label="account of current user"
+                                aria-controls={menuId}
+                                aria-haspopup="true"
+                                onClick={this.handleProfileMenuOpen}
+                                color="inherit"
+                            >
+                                <AccountCircle />
+                            </IconButton>
+                        </div>
+                    </Toolbar>
+                </AppBar>
+                {renderMenu}
+            </div>
+        );
+    }
 }
+
+export default withStyles(styles)(MenuAppBar);

@@ -58,7 +58,7 @@ class App extends React.Component {
       });
     });
 
-    this.setState({ nearbyPlaces: dataFormated })
+    this.setState({ nearbyPlaces: dataFormated });
   }
 
   render() {
