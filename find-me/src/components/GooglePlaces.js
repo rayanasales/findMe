@@ -1,81 +1,34 @@
-import React from 'react';
-import './../assets/css/GooglePlaces.css';
+import { GoogleComponent } from 'react-google-location'
+//... 
+import React, { Component } from 'react';
 
-var map, service, infowindow;
+const API_KEY = "AIzaSyBTo1qr8ftqlqSkLhVg_rdHpKbslJxdMas"; // how to get key - step are below
 
-class GooglePlaces extends React.Component {
-
-    componentDidMount() {
-        this.initMap();
-    }
-
-    initMap = () => {
-        const sydney = new google.maps.LatLng(-8.054, -34.881);
-        infowindow = new google.maps.InfoWindow();
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: sydney,
-            zoom: 15
-        });
-        const request = {
-            query: "Mercearia Anchieta",
-            fields: ["name", "geometry"]
+class HomeComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            place: null,
         };
-        service = new google.maps.places.PlacesService(map);
-        service.findPlaceFromQuery(request, (results, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                for (let i = 0; i < results.length; i++) {
-                    this.createMarker(results[i]);
-                }
-
-                map.setCenter(results[0].geometry.location);
-            }
-        });
-
-        this.initialize();
-    }
-
-    initialize = () => {
-        var pyrmont = new google.maps.LatLng(-8.05428, -34.8813);
-
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: pyrmont,
-            zoom: 15
-        });
-
-        var request = {
-            location: pyrmont,
-            radius: 3 * 1000, // 3km
-            type: ['gas_station'] // mais tipos de lugares https://developers.google.com/places/web-service/supported_types
-        };
-
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, this.callback);
-    }
-
-    callback = (results, status) => {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                this.createMarker(results[i]);
-            }
-        }
-    }
-
-    createMarker = (place) => {
-        const marker = new google.maps.Marker({
-            map,
-            position: place.geometry.location
-        });
-        google.maps.event.addListener(marker, "click", () => {
-            infowindow.setContent(place.name);
-            infowindow.open(map);
-        });
     }
 
     render() {
         return (
-            <div id="map"></div>
-        );
+            <div >
+                <GoogleComponent
+
+                    apiKey={API_KEY}
+                    language={'en'}
+                    country={'country:in|country:us'}
+                    coordinates={true}
+                    locationBoxStyle={'custom-style'}
+                    locationListStyle={'custom-style-list'}
+                    onChange={(e) => { this.setState({ place: e }) }} />
+            </div>
+
+        )
     }
 }
 
-export default GooglePlaces;
+
+export default HomeComponent;
