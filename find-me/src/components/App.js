@@ -18,6 +18,9 @@ class App extends React.Component {
     this.state = {
       nearbyPlaces: []
     }
+    this.nearbySearchGoogle = this.nearbySearchGoogle.bind(this);
+    this.formatTypes = this.formatTypes.bind(this);
+    this.formatData = this.formatData.bind(this);
   }
 
   componentDidMount() {
@@ -32,16 +35,6 @@ class App extends React.Component {
     }).catch(error => {
       console.log(error);
     });
-  }
-
-  formatTypes(types) {
-    var formatedTypes = "";
-
-    types.forEach(function (t) {
-      formatedTypes += "#" + t + " ";
-    });
-
-    return formatedTypes;
   }
 
   formatData(data) {
@@ -59,6 +52,16 @@ class App extends React.Component {
     });
 
     this.setState({ nearbyPlaces: dataFormated });
+  }
+
+  formatTypes(types) {
+    var formatedTypes = "";
+
+    types.forEach(function (t) {
+      formatedTypes += "#" + t + " ";
+    });
+
+    return formatedTypes;
   }
 
   render() {
