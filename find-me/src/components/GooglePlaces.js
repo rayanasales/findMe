@@ -1,34 +1,29 @@
-import { GoogleComponent } from 'react-google-location'
-//... 
 import React, { Component } from 'react';
 
-const API_KEY = "AIzaSyBTo1qr8ftqlqSkLhVg_rdHpKbslJxdMas"; // how to get key - step are below
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+const API_KEY = "AIzaSyBTo1qr8ftqlqSkLhVg_rdHpKbslJxdMas";
+const URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=13.88068,100.43575&radius=300&type=gas_station&key=" + API_KEY;
 
-class HomeComponent extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            place: null,
-        };
-    }
+class GooglePlaces extends Component {
 
     render() {
+        debugger;
+
+        let _fire = fetch(proxyUrl + URL);
+
+        _fire.then((dataJson) => {
+            return dataJson.json().then((data) => {
+                debugger;
+            })
+        }).catch(error => {
+            debugger;
+        })
+
         return (
-            <div >
-                <GoogleComponent
-
-                    apiKey={API_KEY}
-                    language={'en'}
-                    country={'country:in|country:us'}
-                    coordinates={true}
-                    locationBoxStyle={'custom-style'}
-                    locationListStyle={'custom-style-list'}
-                    onChange={(e) => { this.setState({ place: e }) }} />
-            </div>
-
+            <div id="map">teste Component</div>
         )
     }
 }
 
 
-export default HomeComponent;
+export default GooglePlaces;
