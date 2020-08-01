@@ -96,14 +96,14 @@ class MenuAppBar extends Component {
             <div className={classes.grow}>
                 <AppBar position="fixed" style={{ background: '#2E3B55' }} >
                     <Toolbar>
-                        <IconButton
+                        {/* <IconButton
                             edge="start"
                             className={classes.menuButton}
                             color="inherit"
                             aria-label="open drawer"
                         >
                             <MenuIcon />
-                        </IconButton>
+                        </IconButton> */}
                         <Typography className={classes.title} variant="h6" noWrap>
                             Locais em Recife (Pernambuco)
                         </Typography>
