@@ -3,6 +3,7 @@ import './../assets/css/App.css';
 import Api from "./../util/api";
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
+import MenuAppBar from "./MenuAppBar";
 
 const centerMap = {
   lat: -8.05428,
@@ -64,6 +65,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
+        <MenuAppBar />
         <div className="content">
           {content}
           <GoogleMap markers={nearbyPlaces} />
