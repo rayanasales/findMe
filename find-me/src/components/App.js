@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <GooglePlaces />
+          <GooglePlaces lat={-8.05428} lng={-34.8813} radius={2 * 1000} type="gym" />
         </header>
       </div>
     );
