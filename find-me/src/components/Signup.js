@@ -7,17 +7,25 @@ import Strings from '../util/Strings';
 
 import { Link } from 'react-router-dom';
 
-class Login extends Component {
+class Signup extends Component {
 
     constructor() {
         super();
         this.state = {
+            name: "",
             email: "",
             password: ""
         }
+        this.onNamekeySearchPress = this.onNamekeySearchPress.bind(this);
         this.onEmailkeySearchPress = this.onEmailkeySearchPress.bind(this);
         this.onPasswordkeySearchPress = this.onPasswordkeySearchPress.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
+    }
+
+    onNamekeySearchPress(e) {
+        this.setState({
+            name: e.target.value
+        });
     }
 
     onEmailkeySearchPress(e) {
@@ -39,12 +47,22 @@ class Login extends Component {
     render() {
         return (
             <div className="login-template">
-                <div className="login-container">
-                    <h1 className="form-title">{Strings.start_login}</h1>
+                <div className="signup-container">
+                    <h1 className="form-title">{Strings.signup_ask_data}</h1>
                     <div className="text-field-login">
                         <TextField
                             required
-                            id="outlined-required"
+                            id="name-required"
+                            label="Nome"
+                            variant="outlined"
+                            onChange={this.onNamekeySearchPress}
+                            className="text-field-login"
+                        />
+                    </div>
+                    <div className="text-field-login">
+                        <TextField
+                            required
+                            id="email-required"
                             label="Email"
                             variant="outlined"
                             onChange={this.onEmailkeySearchPress}
@@ -54,7 +72,7 @@ class Login extends Component {
                     <div className="text-field-login">
                         <TextField
                             required
-                            id="outlined-password-input"
+                            id="password-required"
                             label="Senha"
                             type="password"
                             autoComplete="current-password"
@@ -62,11 +80,6 @@ class Login extends Component {
                             onChange={this.onPasswordkeySearchPress}
                             className="text-field-login"
                         />
-                    </div>
-                    <div className="login-button-content">
-                        <Link to="/signup">
-                            {Strings.create_account}
-                        </Link>
                     </div>
                     <div className="login-button-content">
                         <Link to="/home">
@@ -81,4 +94,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Signup;

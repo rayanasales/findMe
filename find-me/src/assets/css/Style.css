@@ -1,3 +1,70 @@
+html, body {
+    background-color: #F0F0F0;
+}
+
+body {
+    margin: 0 !important;
+}
+
+html, body, #root {
+    height: 100% !important;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    margin-top: 75px;
+}
+
+.empty-content {
+    width: 800px;
+    text-align: center;
+    color: #5e5e5e;
+}
+
+.empty-frags {
+    max-width: 350px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 230px;
+}
+
+.places-content {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #F0F0F0;
+    color: #5e5e5e;
+}
+
+.place-card {
+    border: 1px solid #dbdbdb;
+    background-color: white;
+    box-shadow: 5px 10px 8px #888888;
+    border-radius: 3px;
+    width: 380px;
+    margin: 9px;
+}
+
+.label {
+    margin: 10px;
+    white-space: nowrap;
+    width: 360px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.place-vicinity {
+    max-width: 350px;
+    margin: 10px;
+}
+
+/* LOADING */
+
 .vertical-centered-box {
     background: rgba(27,63,123,.8);
     position: absolute;
@@ -94,3 +161,69 @@
   [not-existing] {
     zoom: 1;
   }
+
+/* END STYLE LOADING */
+
+
+/* LOGIN STYLE */
+
+.login-template {
+    height: 100% !important;
+    background-image: url('./../images/google-map-background.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    color: #5e5e5e;
+}
+
+.login-container {
+    border: 1px solid #dbdbdb;
+
+    /* middle of screen */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    /* style card */
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    box-shadow: 5px 10px 8px #888888;
+    text-align: center;
+}
+
+.form-title {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.text-field-login {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-button-content {
+    margin-top: 30px;
+}
+
+
+/* SIGNUP STYLE */
+
+.signup-container {
+  border: 1px solid #dbdbdb;
+
+    /* middle of screen */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    /* style card */
+    width: 400px;
+    height: 430px;
+    background-color: white;
+    box-shadow: 5px 10px 8px #888888;
+    text-align: center;
+}

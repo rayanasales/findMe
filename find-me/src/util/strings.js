@@ -8,9 +8,10 @@ const empty_places = "Nenhum local encontrado";
 const start_login = "Efetue seu login";
 const confirm_login = "Entrar";
 const create_account = "Cadastre-se";
+const signup_ask_data = "Insira seus dados";
 
 const Strings = {
     place_type_default_param, map_zoom, address, popular_rating,
-    locales_recife, search_locale, empty_places, start_login, confirm_login, create_account
+    locales_recife, search_locale, empty_places, start_login, confirm_login, create_account, signup_ask_data
 };
 export default Strings;

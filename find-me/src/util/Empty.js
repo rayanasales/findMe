@@ -1,5 +1,5 @@
 import React from 'react';
-import './../assets/css/Empty.css';
+import './../assets/css/Style.css';
 import ErrorIcon from '../assets/images/error-icon.png';
 import Strings from './Strings';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './../assets/css/App.css';
+import './../assets/css/Style.css';
 import Api from "../util/Api";
 import CONSTANTS from '../util/Common';
 import Strings from '../util/Strings';

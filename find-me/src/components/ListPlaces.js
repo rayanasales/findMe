@@ -1,5 +1,5 @@
 import React from 'react';
-import './../assets/css/ListPlaces.css';
+import './../assets/css/Style.css';
 import Strings from '../util/Strings';
 
 class ListPlaces extends React.Component {
