@@ -6,6 +6,8 @@ import './../assets/css/Login.css';
 import Strings from '../util/Strings';
 import history from '../util/History';
 
+import { Link } from 'react-router-dom';
+
 class Login extends Component {
 
     constructor() {
@@ -61,9 +63,10 @@ class Login extends Component {
                                 onChange={this.onPasswordkeySearchPress}
                                 className="text-field-login"
                             />
-                            <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
+                            {/* <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
                                 {Strings.confirm_login}
-                            </Button>
+                            </Button> */}
+                            <Link to="/home">Entrar</Link>
                         </form>
                     </div>
                 </div>

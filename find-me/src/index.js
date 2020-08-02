@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from "react-router-dom";
-import AppRoutes from "./util/Routes";
 import './assets/css/Index.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Login from "./components/Login";
+import Home from "./components/Home";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <HashRouter>
-      <AppRoutes />
-    </HashRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" exact={true} component={Login} />
+      <Route path="/home" component={Home} />
+    </Switch>
+  </ BrowserRouter>,
   document.getElementById('root')
 );

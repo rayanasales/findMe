@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import Strings from '../util/Strings';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     grow: {
@@ -123,11 +124,12 @@ class MenuAppBar extends Component {
                                     <PeopleAltIcon />
                                 </Badge>
                             </IconButton>
-                            <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.eventTemp}>
+                            {/* <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.eventTemp}>
                                 <Badge badgeContent={0} color="secondary">
                                     <PowerSettingsNewIcon />
                                 </Badge>
-                            </IconButton>
+                            </IconButton> */}
+                            <Link to="/">Log out</Link>
                         </div>
                     </Toolbar>
                 </AppBar>
