@@ -3,6 +3,7 @@ import './../assets/css/App.css';
 import Api from "./../util/api";
 import CONSTANTS from './../util/common';
 import Strings from './../util/strings';
+import Loading from './../util/loading';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
@@ -12,6 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      isLoading: true,
       nearbyPlaces: []
     }
     this.nearbySearchGoogle = this.nearbySearchGoogle.bind(this);
@@ -47,7 +49,7 @@ class App extends React.Component {
       });
     });
 
-    this.setState({ nearbyPlaces: dataFormated });
+    this.setState({ nearbyPlaces: dataFormated, isLoading: false });
   }
 
   formatTypes(types) {
@@ -61,17 +63,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { nearbyPlaces } = this.state;
-
-    var content = nearbyPlaces.length === 0 ? <span>carregando...</span> : <ListPlaces places={nearbyPlaces} />;
+    const { nearbyPlaces, isLoading } = this.state;
 
     return (
       <div className="app">
         <MenuAppBar nearbySearchGoogle={this.nearbySearchGoogle} />
         <div className="content">
-          {content}
+          <ListPlaces places={nearbyPlaces} />
           <GoogleMap markers={nearbyPlaces} />
         </div>
+        <Loading isLoading={isLoading} />
       </div>
     );
   }
