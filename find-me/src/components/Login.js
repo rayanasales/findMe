@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-// import { getUserData, getDefaultRoute } from "./../util/Auth";
+import { setSession } from "./../util/Auth";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
 import Strings from '../util/Strings';
+import Api from '../util/Api';
 
 import { Link } from 'react-router-dom';
 
@@ -34,6 +35,8 @@ class Login extends Component {
 
     onSubmitForm() {
         const { email, password } = this.state;
+        var token = Api.login(email, password).token;
+        setSession(email, token);
     }
 
     render() {

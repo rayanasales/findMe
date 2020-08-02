@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import SearchIcon from '@material-ui/icons/Search';
+import { clearSession } from "./../util/Auth";
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import Strings from '../util/Strings';
@@ -77,11 +78,11 @@ class MenuAppBar extends Component {
         this.state = {
             anchorEl: null
         }
-        this.keySearchPress = this.keySearchPress.bind(this);
-        this.eventTemp = this.eventTemp.bind(this);
+        this.handleSearchOnKeyDown = this.handleSearchOnKeyDown.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
-    keySearchPress(e) {
+    handleSearchOnKeyDown(e) {
         const { nearbySearchGoogle } = this.props;
 
         if (e.keyCode == 13) {
@@ -89,8 +90,8 @@ class MenuAppBar extends Component {
         }
     }
 
-    eventTemp(e) {
-        // alert("evento temporário");
+    handleLogout() {
+        clearSession();
     }
 
     render() {
@@ -113,19 +114,19 @@ class MenuAppBar extends Component {
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
-                                onKeyDown={this.keySearchPress}
+                                onKeyDown={this.handleSearchOnKeyDown}
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </div>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
-                            <IconButton aria-label="show 0 new mails" color="inherit" onClick={this.eventTemp}>
+                            {/* <IconButton aria-label="show 0 new mails" color="inherit" onClick={this.eventTemp}>
                                 <Badge badgeContent={0} color="secondary">
                                     <PeopleAltIcon />
                                 </Badge>
-                            </IconButton>
+                            </IconButton> */}
                             <Link to="/">
-                                <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.eventTemp}>
+                                <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.handleLogout}>
                                     <Badge badgeContent={0} color="secondary">
                                         <PowerSettingsNewIcon />
                                     </Badge>
