@@ -35,11 +35,18 @@ class Login extends Component {
 
     onSubmitForm() {
         const { email, password } = this.state;
-        var token = Api.login(email, password).token;
-        setSession(email, token);
+
+        if (!email || !password) {
+            alert(Strings.inform_data);
+        } else {
+            var token = Api.login(email, password).token;
+            setSession(email, token);
+        }
     }
 
     render() {
+        const { errorMessage } = this.state;
+
         return (
             <div className="login-template">
                 <div className="login-container">
@@ -66,11 +73,11 @@ class Login extends Component {
                             className="text-field-login"
                         />
                     </div>
-                    <div className="login-button-content">
+                    {/* <div className="login-button-content">
                         <Link to="/signup">
                             {Strings.create_account}
                         </Link>
-                    </div>
+                    </div> */}
                     <div className="login-button-content">
                         <Link to="/home">
                             <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>

@@ -12,4 +12,8 @@ function clearSession() {
     localStorage.removeItem(userDataKey);
 }
 
-export { setSession, clearSession };
+function getSession() {
+    return localStorage.getItem(userDataKey);
+}
+
+export { setSession, clearSession, getSession };

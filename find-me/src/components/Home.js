@@ -8,6 +8,7 @@ import Loading from '../util/Loading';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
+import { getSession } from "./../util/Auth";
 
 class Home extends React.Component {
 
@@ -65,6 +66,12 @@ class Home extends React.Component {
 
   render() {
     const { nearbyPlaces, isLoading } = this.state;
+
+    var session = getSession();
+    if (!session) {
+      window.location.href = "http://" + window.location.host + "/";
+      return (null);
+    }
 
     return (
       <div className="app">
