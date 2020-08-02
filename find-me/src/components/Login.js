@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Login.css';
 import Strings from '../util/Strings';
+import history from '../util/History';
 
 class Login extends Component {
 
@@ -32,7 +33,7 @@ class Login extends Component {
 
     onSubmitForm() {
         const { email, password } = this.state;
-        alert("email = " + email + " senha = " + password);
+        history.push("/home");
     }
 
     render() {
