@@ -2,6 +2,7 @@ import React from 'react';
 import './../assets/css/App.css';
 import Api from "./../util/api";
 import CONSTANTS from './../util/common';
+import Strings from './../util/strings';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
@@ -19,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.nearbySearchGoogle("bank"); // https://developers.google.com/places/web-service/supported_types
+    this.nearbySearchGoogle(Strings.place_type_default_param); // https://developers.google.com/places/web-service/supported_types
   }
 
   nearbySearchGoogle(placeType) {

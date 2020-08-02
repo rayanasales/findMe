@@ -6,10 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-// import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import Strings from './../util/strings';
 
 const styles = theme => ({
     grow: {
@@ -99,29 +99,20 @@ class MenuAppBar extends Component {
             <div className={classes.grow}>
                 <AppBar position="fixed" style={{ background: '#2E3B55' }} >
                     <Toolbar>
-                        {/* <IconButton
-                            edge="start"
-                            className={classes.menuButton}
-                            color="inherit"
-                            aria-label="open drawer"
-                        >
-                            <MenuIcon />
-                        </IconButton> */}
                         <Typography className={classes.title} variant="h6" noWrap>
-                            Locais em Recife (Pernambuco)
+                            {Strings.locales_recife}
                         </Typography>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon />
                             </div>
                             <InputBase
-                                placeholder="Pesquisar local..."
+                                placeholder={Strings.search_locale}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
                                 onKeyDown={this.keySearchPress}
-                                // onChange={handleSearchChange}
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </div>
