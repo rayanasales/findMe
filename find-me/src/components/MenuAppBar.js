@@ -90,7 +90,7 @@ class MenuAppBar extends Component {
     }
 
     eventTemp(e) {
-        alert("evento temporário");
+        // alert("evento temporário");
     }
 
     render() {
@@ -124,12 +124,13 @@ class MenuAppBar extends Component {
                                     <PeopleAltIcon />
                                 </Badge>
                             </IconButton>
-                            {/* <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.eventTemp}>
-                                <Badge badgeContent={0} color="secondary">
-                                    <PowerSettingsNewIcon />
-                                </Badge>
-                            </IconButton> */}
-                            <Link to="/">Log out</Link>
+                            <Link to="/">
+                                <IconButton aria-label="show 0 new notifications" color="inherit" onClick={this.eventTemp}>
+                                    <Badge badgeContent={0} color="secondary">
+                                        <PowerSettingsNewIcon />
+                                    </Badge>
+                                </IconButton>
+                            </Link>
                         </div>
                     </Toolbar>
                 </AppBar>

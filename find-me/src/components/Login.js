@@ -35,40 +35,45 @@ class Login extends Component {
 
     onSubmitForm() {
         const { email, password } = this.state;
-        history.push("/home");
     }
 
     render() {
         return (
             <div className="login-container">
-                <div className="login">
-                    <div className="form">
-                        <form noValidate>
-                            <h1 className="form-title">{Strings.start_login}</h1>
-                            <TextField
-                                required
-                                id="outlined-required"
-                                label="Email"
-                                variant="outlined"
-                                onChange={this.onEmailkeySearchPress}
-                                className="text-field-login"
-                            />
-                            <TextField
-                                required
-                                id="outlined-password-input"
-                                label="Senha"
-                                type="password"
-                                autoComplete="current-password"
-                                variant="outlined"
-                                onChange={this.onPasswordkeySearchPress}
-                                className="text-field-login"
-                            />
-                            {/* <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
-                                {Strings.confirm_login}
-                            </Button> */}
-                            <Link to="/home">Entrar</Link>
-                        </form>
-                    </div>
+                <h1 className="form-title">{Strings.start_login}</h1>
+                <div className="text-field-login">
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Email"
+                        variant="outlined"
+                        onChange={this.onEmailkeySearchPress}
+                        className="text-field-login"
+                    />
+                </div>
+                <div className="text-field-login">
+                    <TextField
+                        required
+                        id="outlined-password-input"
+                        label="Senha"
+                        type="password"
+                        autoComplete="current-password"
+                        variant="outlined"
+                        onChange={this.onPasswordkeySearchPress}
+                        className="text-field-login"
+                    />
+                </div>
+                <div className="login-button-content">
+                    <Link to="/home">
+                        {Strings.create_account}
+                    </Link>
+                </div>
+                <div className="login-button-content">
+                    <Link to="/home">
+                        <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
+                            {Strings.confirm_login}
+                        </Button>
+                    </Link>
                 </div>
             </div>
         );

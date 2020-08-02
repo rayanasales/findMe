@@ -5,32 +5,34 @@ body {
     color: #5e5e5e;
 }
 
-.login {
-    width: 300px;
-    height: 400px;
-    text-align: center;
-    position: relative;
-    top: 100%;
-    left: 37%;
-}
-
-.form {
-    margin-top: 60%;
+.login-container {
     border: 1px solid #dbdbdb;
+
+    /* middle of screen */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    /* style card */
+    width: 400px;
+    height: 400px;
     background-color: white;
     box-shadow: 5px 10px 8px #888888;
-    border-radius: 3px;
+    text-align: center;
 }
 
 .form-title {
-    margin-bottom: 5px;
-}
-
-#login-button {
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 30px;
 }
 
 .text-field-login {
-    margin-top: 20px !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-button-content {
+    margin-top: 30px;
 }
