@@ -1,0 +1,36 @@
+body {
+    background-image: url('./../images/google-map-background.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    color: #5e5e5e;
+}
+
+.login {
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    position: relative;
+    top: 100%;
+    left: 37%;
+}
+
+.form {
+    margin-top: 60%;
+    border: 1px solid #dbdbdb;
+    background-color: white;
+    box-shadow: 5px 10px 8px #888888;
+    border-radius: 3px;
+}
+
+.form-title {
+    margin-bottom: 5px;
+}
+
+#login-button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.text-field-login {
+    margin-top: 20px !important;
+}
