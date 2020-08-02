@@ -1,9 +1,9 @@
 import React from 'react';
 import './../assets/css/App.css';
-import Api from "./../util/api";
-import CONSTANTS from './../util/common';
-import Strings from './../util/strings';
-import Loading from './../util/loading';
+import Api from "../util/Api";
+import CONSTANTS from '../util/Common';
+import Strings from '../util/Strings';
+import Loading from '../util/Loading';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";

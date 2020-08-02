@@ -1,6 +1,6 @@
 import React from 'react';
 import './../assets/css/ListPlaces.css';
-import Strings from './../util/strings';
+import Strings from '../util/Strings';
 
 class ListPlaces extends React.Component {
 

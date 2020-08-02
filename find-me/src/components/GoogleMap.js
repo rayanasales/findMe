@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import CONSTANTS from './../util/common';
-import Strings from './../util/strings';
+import CONSTANTS from '../util/Common';
+import Strings from '../util/Strings';
 import iconFinder from "./../assets/images/icon-finder-google-small-red.png";
 
 const MarkerComponent = ({ text }) => <img style={{ maxWidth: "25px" }} src={iconFinder} title={text} />;

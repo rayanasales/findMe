@@ -9,7 +9,7 @@ import Badge from '@material-ui/core/Badge';
 import SearchIcon from '@material-ui/icons/Search';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import Strings from './../util/strings';
+import Strings from '../util/Strings';
 
 const styles = theme => ({
     grow: {

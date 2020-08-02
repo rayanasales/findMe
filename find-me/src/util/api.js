@@ -1,4 +1,4 @@
-import CONSTANTS from './common';
+import CONSTANTS from './Common';
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 const BASE_GOOGLE_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
 
