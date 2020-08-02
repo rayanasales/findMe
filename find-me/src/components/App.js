@@ -1,15 +1,10 @@
 import React from 'react';
 import './../assets/css/App.css';
 import Api from "./../util/api";
+import CONSTANTS from './../util/common';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
-
-const centerMap = {
-  lat: -8.05428,
-  lgn: -34.8813
-};
-const radius = 5 * 1000; // 2km
 
 class App extends React.Component {
 
@@ -28,7 +23,7 @@ class App extends React.Component {
   }
 
   nearbySearchGoogle(placeType) {
-    Api.nearbySearch(centerMap.lat, centerMap.lgn, radius, placeType).then((dataJson) => {
+    Api.nearbySearch(CONSTANTS.RECIFE_CORDS_LONG.lat, CONSTANTS.RECIFE_CORDS_LONG.lgn, CONSTANTS.RADIUS, placeType).then((dataJson) => {
       return dataJson.json().then((data) => {
         this.formatData(data);
       })
