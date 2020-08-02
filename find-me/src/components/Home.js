@@ -9,7 +9,7 @@ import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
 
-class App extends React.Component {
+class Home extends React.Component {
 
   constructor() {
     super();
@@ -79,4 +79,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Home;
