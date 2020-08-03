@@ -13,7 +13,7 @@ function saveUser(userData) {
     } else {
         userList = JSON.parse(userList);
     }
-    
+
     var user = userList.find(x => x.email === userData.email);
 
     if (user) {
@@ -61,4 +61,26 @@ function decryptPassword(encrypted) {
     return decrypt;
 }
 
-export { saveUser, findUser, findUserByEmail };
+function updateUser(oldEmail, newUser) {
+    var user = findUserByEmail(oldEmail);
+    newUser.password = user.password;
+
+    var userList = JSON.parse(localStorage.getItem(USERS_LIST_KEY));
+    var index = 0;
+
+    for (var i = 0; i < userList.length; i++) {
+        if (userList[i].email === oldEmail) {
+            index = i;
+        }
+    }
+
+    userList.splice(index, 1);
+    userList.push(newUser);
+
+    localStorage.removeItem(USERS_LIST_KEY);
+    localStorage.setItem(USERS_LIST_KEY, JSON.stringify(userList));
+
+    return newUser;
+}
+
+export { saveUser, findUser, findUserByEmail, updateUser };

@@ -10,6 +10,8 @@ const update_profile = "Atualize seus dados";
 const confirm_login = "Entrar";
 const create_account = "Cadastre-se";
 const back = "Voltar";
+const update = "Atualizar";
+const update_success = "Cadastro atualizado com sucesso";
 const signup_ask_data = "Insira seus dados";
 const inform_data = "Informe e-mail e senha";
 const user_salved_already = "Usuário já cadastrado";
@@ -20,6 +22,7 @@ const Strings = {
     place_type_default_param, map_zoom, address, popular_rating,
     locales_recife, search_locale, empty_places, start_login, back,
     confirm_login, create_account, signup_ask_data, inform_data,
-    user_salved_already, user_saved_success, user_not_found, update_profile
+    user_salved_already, user_saved_success, user_not_found, update_profile,
+    update, update_success
 };
 export default Strings;

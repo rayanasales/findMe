@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { getSession } from "./../util/storage/Auth";
-import { findUserByEmail } from "./../util/storage/Users";
+import { getSession, refreshSession } from "./../util/storage/Auth";
+import { findUserByEmail, updateUser } from "./../util/storage/Users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
 import Strings from '../util/Strings';
-import Api from '../util/Api';
 
 import { Link } from 'react-router-dom';
 
@@ -19,11 +18,12 @@ class Login extends Component {
         }
         this.onNameChange = this.onNameChange.bind(this);
         this.onEmailChange = this.onEmailChange.bind(this);
+        this.onSubmitForm = this.onSubmitForm.bind(this);
     }
 
     onNameChange(e) {
         this.setState({
-            email: e.target.value
+            name: e.target.value
         });
     }
 
@@ -31,6 +31,20 @@ class Login extends Component {
         this.setState({
             email: e.target.value
         });
+    }
+
+    onSubmitForm() {
+        const { name, email } = this.state;
+
+        var currentEmail = JSON.parse(getSession()).email;
+        var data = {
+            name: name,
+            email: email
+        }
+
+        var newUser = updateUser(currentEmail, data);
+        refreshSession(newUser);
+        alert(Strings.update_success);
     }
 
     render() {
@@ -70,7 +84,7 @@ class Login extends Component {
                     </div>
                     <div className="login-button-content">
                         <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
-                            {Strings.confirm_login}
+                            {Strings.update}
                         </Button>
                     </div>
                 </div>

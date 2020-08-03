@@ -16,4 +16,9 @@ function getSession() {
     return localStorage.getItem(userDataKey);
 }
 
-export { setSession, clearSession, getSession };
+function refreshSession(newUser) {
+    var token = JSON.parse(getSession()).token;
+    setSession(newUser.email, token);
+}
+
+export { setSession, clearSession, getSession, refreshSession };
