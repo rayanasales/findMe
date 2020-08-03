@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { setSession } from "./../util/Auth";
+import { setSession } from "./../util/storage/Auth";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
@@ -45,7 +45,6 @@ class Login extends Component {
     }
 
     render() {
-        const { errorMessage } = this.state;
 
         return (
             <div className="login-template">
@@ -73,11 +72,11 @@ class Login extends Component {
                             className="text-field-login"
                         />
                     </div>
-                    {/* <div className="login-button-content">
+                    <div className="login-button-content">
                         <Link to="/signup">
                             {Strings.create_account}
                         </Link>
-                    </div> */}
+                    </div>
                     <div className="login-button-content">
                         <Link to="/home">
                             <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>

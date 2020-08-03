@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-// import { getUserData, getDefaultRoute } from "./../util/Auth";
+import { setSession } from "./../util/storage/Auth";
+import { saveUser } from "./../util/storage/Users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
 import Strings from '../util/Strings';
-
-import { Link } from 'react-router-dom';
+import Api from '../util/Api';
+// import { Link } from 'react-router-dom';
 
 class Signup extends Component {
 
@@ -41,7 +42,28 @@ class Signup extends Component {
     }
 
     onSubmitForm() {
-        const { email, password } = this.state;
+        const { name, email, password } = this.state;
+
+        debugger;
+
+        if (!name || !email || !password) {
+            alert(Strings.inform_data);
+            return;
+        }
+
+        var message = saveUser({
+            name: name,
+            email: email,
+            senha: password
+        });
+
+        if (message === Strings.user_saved_success) {
+            var token = Api.login(email, password).token;
+            setSession(email, token);
+            window.location.href = "http://" + window.location.host + "/home";
+        } else {
+            alert(Strings.user_salved_already);
+        }
     }
 
     render() {
@@ -81,12 +103,12 @@ class Signup extends Component {
                             className="text-field-login"
                         />
                     </div>
-                    <div className="login-button-content">
-                        <Link to="/home">
-                            <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
-                                {Strings.confirm_login}
-                            </Button>
-                        </Link>
+                    <div className="signup-button-content">
+                        {/* <Link to="/home"> */}
+                        <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
+                            {Strings.confirm_login}
+                        </Button>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

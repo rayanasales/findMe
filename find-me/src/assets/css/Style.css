@@ -187,7 +187,7 @@ html, body, #root {
 
     /* style card */
     width: 400px;
-    height: 350px;
+    height: 370px;
     background-color: white;
     box-shadow: 5px 10px 8px #888888;
     text-align: center;
@@ -204,7 +204,11 @@ html, body, #root {
 }
 
 .login-button-content {
-    margin-top: 40px;
+    margin-top: 20px;
+}
+
+.signup-button-content {
+  margin-top: 40px;
 }
 
 /* SIGNUP STYLE */

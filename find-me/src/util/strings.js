@@ -10,9 +10,13 @@ const confirm_login = "Entrar";
 const create_account = "Cadastre-se";
 const signup_ask_data = "Insira seus dados";
 const inform_data = "Informe e-mail e senha";
+const user_salved_already = "Usuário já cadastrado";
+const user_saved_success = "Usuário salvo com sucesso";
 
 const Strings = {
     place_type_default_param, map_zoom, address, popular_rating,
-    locales_recife, search_locale, empty_places, start_login, confirm_login, create_account, signup_ask_data, inform_data
+    locales_recife, search_locale, empty_places, start_login, 
+    confirm_login, create_account, signup_ask_data, inform_data,
+    user_salved_already, user_saved_success
 };
 export default Strings;
