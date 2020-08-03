@@ -238,3 +238,9 @@ a {
 svg {
   fill: white !important;
 }
+
+.profile-template {
+  height: 100% !important;
+  background-color: #F0F0F0;
+  color: #5e5e5e;
+}

@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
+import Profile from "./components/Profile";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ ReactDOM.render(
       <Route path="/" exact={true} component={Login} />
       <Route path="/home" component={Home} />
       <Route path="/signup" component={Signup} />
+      <Route path="/profile" component={Profile} />
       <Route path="*" component={Login} />
     </Switch>
   </ BrowserRouter>,

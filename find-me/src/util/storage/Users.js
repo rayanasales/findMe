@@ -44,6 +44,12 @@ function findUser(email, password) {
     return null;
 }
 
+function findUserByEmail(email) {
+    var userList = JSON.parse(localStorage.getItem(USERS_LIST_KEY));
+    var user = userList.find(x => x.email === email);
+    return user;
+}
+
 function encryptPassword(pass) {
     var encrypt = CryptoJS.AES.encrypt(pass, SECRET_KEY).toString()
     return encrypt;
@@ -55,4 +61,4 @@ function decryptPassword(encrypted) {
     return decrypt;
 }
 
-export { saveUser, findUser };
+export { saveUser, findUser, findUserByEmail };
