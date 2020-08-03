@@ -1,37 +1,58 @@
 import Strings from "../Strings";
-const usersListKey = "UsersList";
+import CryptoJS from "crypto-js";
 
-function saveUser(user) {
+const SECRET_KEY = "secret-key-find-me-16-56";
+const USERS_LIST_KEY = "UsersList";
+
+function saveUser(userData) {
     var message = "";
-    var userList = localStorage.getItem(usersListKey);
+    var userList = localStorage.getItem(USERS_LIST_KEY);
 
-    if (userList) {
-        var user = userList.find(x => x.email === user.email);
-
-        if (user) {
-            message = Strings.user_salved_already;
-        } else {
-            userList.push(user);
-            message = Strings.user_saved_success;
-        }
-    } else {
+    if (!userList) {
         userList = [];
-        userList.push(user);
+    } else {
+        userList = JSON.parse(userList);
+    }
+    
+    var user = userList.find(x => x.email === userData.email);
+
+    if (user) {
+        message = Strings.user_salved_already;
+    } else {
+        userData.password = encryptPassword(userData.password);
+        userList.push(userData);
         message = Strings.user_saved_success;
     }
 
-    localStorage.setItem(usersListKey, JSON.stringify(userList));
+    localStorage.setItem(USERS_LIST_KEY, JSON.stringify(userList));
     return message;
 }
 
-// function clearSession() {
-//     localStorage.removeItem(usersListKey);
-// }
-
-function findUser(email) {
-    var userList = JSON.parse(localStorage.getItem(usersListKey));
+function findUser(email, password) {
+    var userList = JSON.parse(localStorage.getItem(USERS_LIST_KEY));
     var user = userList.find(x => x.email === email);
-    return user;
+
+    if (!user) {
+        return null;
+    }
+
+    // check password...
+    var passwordDecrypted = decryptPassword(user.password);
+    if (passwordDecrypted === password) {
+        return user;
+    }
+    return null;
+}
+
+function encryptPassword(pass) {
+    var encrypt = CryptoJS.AES.encrypt(pass, SECRET_KEY).toString()
+    return encrypt;
+}
+
+function decryptPassword(encrypted) {
+    var bytes = CryptoJS.AES.decrypt(encrypted, SECRET_KEY);
+    var decrypt = bytes.toString(CryptoJS.enc.Utf8);
+    return decrypt;
 }
 
 export { saveUser, findUser };

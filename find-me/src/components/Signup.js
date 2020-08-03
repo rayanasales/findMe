@@ -52,7 +52,7 @@ class Signup extends Component {
         var message = saveUser({
             name: name,
             email: email,
-            senha: password
+            password: password
         });
 
         if (message === Strings.user_saved_success) {

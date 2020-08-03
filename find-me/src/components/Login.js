@@ -40,7 +40,7 @@ class Login extends Component {
         if (!email || !password) {
             alert(Strings.inform_data);
         } else {
-            var user = findUser(email);
+            var user = findUser(email, password);
             if (user) {
                 var token = Api.login(email, password).token;
                 setSession(email, token);
