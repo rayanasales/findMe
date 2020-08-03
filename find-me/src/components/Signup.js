@@ -44,8 +44,6 @@ class Signup extends Component {
     onSubmitForm() {
         const { name, email, password } = this.state;
 
-        debugger;
-
         if (!name || !email || !password) {
             alert(Strings.inform_data);
             return;

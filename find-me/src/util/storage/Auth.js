@@ -1,4 +1,4 @@
-const userDataKey = "UserData";
+const userDataKey = "CurrentLoggedUser";
 
 function setSession(email, token) {
     var data = {

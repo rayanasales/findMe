@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { setSession } from "./../util/storage/Auth";
+import { getUsers, findUser } from "./../util/storage/Users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
@@ -39,8 +40,14 @@ class Login extends Component {
         if (!email || !password) {
             alert(Strings.inform_data);
         } else {
-            var token = Api.login(email, password).token;
-            setSession(email, token);
+            var user = findUser(email);
+            if (user) {
+                var token = Api.login(email, password).token;
+                setSession(email, token);
+                window.location.href = "http://" + window.location.host + "/home";
+            } else {
+                alert(Strings.user_not_found);
+            }
         }
     }
 

@@ -2,8 +2,6 @@ import Strings from "../Strings";
 const usersListKey = "UsersList";
 
 function saveUser(user) {
-    debugger; 
-
     var message = "";
     var userList = localStorage.getItem(usersListKey);
 
@@ -30,8 +28,10 @@ function saveUser(user) {
 //     localStorage.removeItem(usersListKey);
 // }
 
-// function getSession() {
-//     return localStorage.getItem(usersListKey);
-// }
+function findUser(email) {
+    var userList = JSON.parse(localStorage.getItem(usersListKey));
+    var user = userList.find(x => x.email === email);
+    return user;
+}
 
-export { saveUser };
+export { saveUser, findUser };
