@@ -12,6 +12,7 @@ ReactDOM.render(
       <Route path="/" exact={true} component={Login} />
       <Route path="/home" component={Home} />
       <Route path="/signup" component={Signup} />
+      <Route path="*" component={Login} />
     </Switch>
   </ BrowserRouter>,
   document.getElementById('root')
