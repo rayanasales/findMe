@@ -3,8 +3,8 @@ import './../assets/css/Style.css';
 import api from "../util/api";
 import CONSTANTS from '../util/common';
 import strings from '../util/strings';
-import empty from '../util/empty';
-import loading from '../util/loading';
+import Empty from '../util/empty';
+import Loading from '../util/loading';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
@@ -77,10 +77,10 @@ class Home extends React.Component {
       <div className="app">
         <MenuAppBar nearbySearchGoogle={this.nearbySearchGoogle} />
         <div className="content">
-          {nearbyPlaces.length === 0 ? <empty /> : <ListPlaces places={nearbyPlaces} />}
+          {nearbyPlaces.length === 0 ? <Empty /> : <ListPlaces places={nearbyPlaces} />}
           <GoogleMap markers={nearbyPlaces} />
         </div>
-        <loading isLoading={isLoading} />
+        <Loading isLoading={isLoading} />
       </div>
     );
   }

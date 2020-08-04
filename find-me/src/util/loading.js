@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './../assets/css/Style.css';
 
-class Loading extends Component {
+class loading extends Component {
 
   constructor() {
     super();
@@ -27,4 +27,4 @@ class Loading extends Component {
   }
 }
 
-export default Loading;
+export default loading;

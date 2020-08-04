@@ -3,7 +3,7 @@ import './../assets/css/Style.css';
 import ErrorIcon from '../assets/images/error-icon.png';
 import strings from './strings';
 
-class Empty extends React.Component {
+class empty extends React.Component {
 
   render() {
     return (
@@ -17,4 +17,4 @@ class Empty extends React.Component {
   }
 }
 
-export default Empty;
+export default empty;
