@@ -8,7 +8,7 @@ import loading from '../util/loading';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
-import { getSession } from "./../util/storage/Auth";
+import { getSession } from "./../util/storage/auth";
 
 class Home extends React.Component {
 
