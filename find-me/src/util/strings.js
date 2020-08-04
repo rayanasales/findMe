@@ -25,4 +25,5 @@ const strings = {
     user_salved_already, user_saved_success, user_not_found, update_profile,
     update, update_success
 };
+
 export default strings;
