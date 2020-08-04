@@ -1,6 +1,6 @@
 import React from 'react';
 import './../assets/css/Style.css';
-import Strings from '../util/Strings';
+import strings from '../util/strings';
 
 class ListPlaces extends React.Component {
 
@@ -15,12 +15,12 @@ class ListPlaces extends React.Component {
               <div className="place-info">
                 <h3 className="place-name label" title={p.name}>{p.name}</h3>
                 <div className="place-vicinity" title={p.vicinity}>
-                  <span>{Strings.address}</span>
+                  <span>{strings.address}</span>
                   {p.vicinity}
                 </div>
                 {
                   p.rating ? <div className="place-rating label" title={p.rating}>
-                    <span>{Strings.popular_rating}</span>
+                    <span>{strings.popular_rating}</span>
                     {p.rating}
                   </div> : null
                 }

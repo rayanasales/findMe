@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { getSession, refreshSession } from "./../util/storage/Auth";
-import { findUserByEmail, updateUser } from "./../util/storage/Users";
+import { getSession, refreshSession } from "../util/storage/auth";
+import { findUserByEmail, updateUser } from "../util/storage/users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
-import Strings from '../util/Strings';
+import strings from '../util/strings';
 
 import { Link } from 'react-router-dom';
 
@@ -44,7 +44,7 @@ class Login extends Component {
 
         var newUser = updateUser(currentEmail, data);
         refreshSession(newUser);
-        alert(Strings.update_success);
+        alert(strings.update_success);
     }
 
     render() {
@@ -54,7 +54,7 @@ class Login extends Component {
         return (
             <div className="profile-template">
                 <div className="login-container">
-                    <h1 className="form-title">{Strings.update_profile}</h1>
+                    <h1 className="form-title">{strings.update_profile}</h1>
                     <div className="text-field-login">
                         <TextField
                             required
@@ -79,12 +79,12 @@ class Login extends Component {
                     </div>
                     <div className="login-button-content">
                         <Link to="/home">
-                            {Strings.back}
+                            {strings.back}
                         </Link>
                     </div>
                     <div className="login-button-content">
                         <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
-                            {Strings.update}
+                            {strings.update}
                         </Button>
                     </div>
                 </div>

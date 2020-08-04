@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import CONSTANTS from '../util/Common';
-import Strings from '../util/Strings';
+import CONSTANTS from '../util/common';
+import strings from '../util/strings';
 import iconFinder from "./../assets/images/icon-finder-google-small-red.png";
 
 const MarkerComponent = ({ text }) => <img style={{ maxWidth: "25px" }} src={iconFinder} title={text} />;
@@ -12,7 +12,7 @@ class GoogleMap extends Component {
             lat: CONSTANTS.RECIFE_CORDS_MIN.lat,
             lng: CONSTANTS.RECIFE_CORDS_MIN.lgn
         },
-        zoom: Strings.map_zoom
+        zoom: strings.map_zoom
     };
 
     renderMarkers() {

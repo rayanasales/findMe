@@ -1,4 +1,4 @@
-import Strings from "../Strings";
+import strings from "../strings";
 import CryptoJS from "crypto-js";
 
 const SECRET_KEY = "secret-key-find-me-16-56";
@@ -17,11 +17,11 @@ function saveUser(userData) {
     var user = userList.find(x => x.email === userData.email);
 
     if (user) {
-        message = Strings.user_salved_already;
+        message = strings.user_salved_already;
     } else {
         userData.password = encryptPassword(userData.password);
         userList.push(userData);
-        message = Strings.user_saved_success;
+        message = strings.user_saved_success;
     }
 
     localStorage.setItem(USERS_LIST_KEY, JSON.stringify(userList));

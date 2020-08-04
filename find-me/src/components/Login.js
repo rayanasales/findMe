@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { setSession } from "./../util/storage/Auth";
-import { getUsers, findUser } from "./../util/storage/Users";
+import { setSession } from "../util/storage/auth";
+import { getUsers, findUser } from "../util/storage/users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
-import Strings from '../util/Strings';
-import Api from '../util/Api';
+import strings from '../util/strings';
+import api from '../util/api';
 
 import { Link } from 'react-router-dom';
 
@@ -38,15 +38,15 @@ class Login extends Component {
         const { email, password } = this.state;
 
         if (!email || !password) {
-            alert(Strings.inform_data);
+            alert(strings.inform_data);
         } else {
             var user = findUser(email, password);
             if (user) {
-                var token = Api.login(email, password).token;
+                var token = api.login(email, password).token;
                 setSession(email, token);
                 window.location.href = "http://" + window.location.host + "/home";
             } else {
-                alert(Strings.user_not_found);
+                alert(strings.user_not_found);
             }
         }
     }
@@ -56,7 +56,7 @@ class Login extends Component {
         return (
             <div className="login-template">
                 <div className="login-container">
-                    <h1 className="form-title">{Strings.start_login}</h1>
+                    <h1 className="form-title">{strings.start_login}</h1>
                     <div className="text-field-login">
                         <TextField
                             required
@@ -81,13 +81,13 @@ class Login extends Component {
                     </div>
                     <div className="login-button-content">
                         <Link to="/signup">
-                            {Strings.create_account}
+                            {strings.create_account}
                         </Link>
                     </div>
                     <div className="login-button-content">
                         <Link to="/home">
                             <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
-                                {Strings.confirm_login}
+                                {strings.confirm_login}
                             </Button>
                         </Link>
                     </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import './../assets/css/Style.css';
-import Api from "../util/Api";
-import CONSTANTS from '../util/Common';
-import Strings from '../util/Strings';
-import Empty from '../util/Empty';
-import Loading from '../util/Loading';
+import api from "../util/api";
+import CONSTANTS from '../util/common';
+import strings from '../util/strings';
+import empty from '../util/empty';
+import loading from '../util/loading';
 import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
@@ -24,11 +24,11 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.nearbySearchGoogle(Strings.place_type_default_param); // https://developers.google.com/places/web-service/supported_types
+    this.nearbySearchGoogle(strings.place_type_default_param); // https://developers.google.com/places/web-service/supported_types
   }
 
   nearbySearchGoogle(placeType) {
-    Api.nearbySearch(CONSTANTS.RECIFE_CORDS_LONG.lat, CONSTANTS.RECIFE_CORDS_LONG.lgn, CONSTANTS.RADIUS, placeType).then((dataJson) => {
+    api.nearbySearch(CONSTANTS.RECIFE_CORDS_LONG.lat, CONSTANTS.RECIFE_CORDS_LONG.lgn, CONSTANTS.RADIUS, placeType).then((dataJson) => {
       return dataJson.json().then((data) => {
         this.formatData(data);
       })
@@ -77,10 +77,10 @@ class Home extends React.Component {
       <div className="app">
         <MenuAppBar nearbySearchGoogle={this.nearbySearchGoogle} />
         <div className="content">
-          {nearbyPlaces.length === 0 ? <Empty /> : <ListPlaces places={nearbyPlaces} />}
+          {nearbyPlaces.length === 0 ? <empty /> : <ListPlaces places={nearbyPlaces} />}
           <GoogleMap markers={nearbyPlaces} />
         </div>
-        <Loading isLoading={isLoading} />
+        <loading isLoading={isLoading} />
       </div>
     );
   }

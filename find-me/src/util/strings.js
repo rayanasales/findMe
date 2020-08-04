@@ -18,11 +18,11 @@ const user_salved_already = "Usuário já cadastrado";
 const user_saved_success = "Usuário salvo com sucesso";
 const user_not_found = "Usuário não encontrado";
 
-const Strings = {
+const strings = {
     place_type_default_param, map_zoom, address, popular_rating,
     locales_recife, search_locale, empty_places, start_login, back,
     confirm_login, create_account, signup_ask_data, inform_data,
     user_salved_already, user_saved_success, user_not_found, update_profile,
     update, update_success
 };
-export default Strings;
+export default strings;

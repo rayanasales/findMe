@@ -11,7 +11,7 @@ import { clearSession } from "./../util/storage/Auth";
 // import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import PersonIcon from '@material-ui/icons/Person';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import Strings from '../util/Strings';
+import strings from '../util/strings';
 import { Link } from 'react-router-dom';
 
 const styles = theme => ({
@@ -103,14 +103,14 @@ class MenuAppBar extends Component {
                 <AppBar position="fixed" style={{ background: '#2E3B55' }} >
                     <Toolbar>
                         <Typography className={classes.title} variant="h6" noWrap>
-                            {Strings.locales_recife}
+                            {strings.locales_recife}
                         </Typography>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon />
                             </div>
                             <InputBase
-                                placeholder={Strings.search_locale}
+                                placeholder={strings.search_locale}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
