@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
 import strings from '../util/strings';
+import { isValidEmail } from '../util/validator';
 
 import { Link } from 'react-router-dom';
 
@@ -35,6 +36,11 @@ class Login extends Component {
 
     onSubmitForm() {
         const { name, email } = this.state;
+
+        if (!isValidEmail(email)) {
+            alert(strings.user_invalid_email);
+            return;
+        }
 
         var currentEmail = JSON.parse(getSession()).email;
         var data = {

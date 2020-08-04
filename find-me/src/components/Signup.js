@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
 import strings from '../util/strings';
 import api from '../util/api';
-// import { Link } from 'react-router-dom';
+import { isValidEmail } from '../util/validator';
 
 class Signup extends Component {
 
@@ -46,6 +46,11 @@ class Signup extends Component {
 
         if (!name || !email || !password) {
             alert(strings.inform_data);
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert(strings.user_invalid_email);
             return;
         }
 
