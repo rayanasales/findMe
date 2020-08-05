@@ -30,7 +30,7 @@ function checkIsLike(place) {
     if (!likedPlaces) {
         return false;
     }
-    var place = likedPlaces.find(x => x.name === place.name);
+    place = likedPlaces.find(x => x.name === place.name);
     return (place != null);
 }
 

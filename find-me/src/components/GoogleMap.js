@@ -4,7 +4,7 @@ import CONSTANTS from '../util/common';
 import strings from '../util/strings';
 import iconFinder from "./../assets/images/icon-finder-google-small-red.png";
 
-const MarkerComponent = ({ text }) => <img style={{ maxWidth: "25px" }} src={iconFinder} title={text} />;
+const MarkerComponent = ({ text }) => <img style={{ maxWidth: "25px" }} alt="icon" src={iconFinder} title={text} />;
 
 class GoogleMap extends Component {
     static defaultProps = {

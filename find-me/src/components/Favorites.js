@@ -43,8 +43,8 @@ class ListPlaces extends React.Component {
                             <div key={key} className="place-card">
                                 <div className="place-info">
                                     {
-                                        !p.isLiked ? <img className="like-icon" src={dislikeIcon} onClick={() => { this.likePlace(p) }} /> :
-                                            <img className="like-icon" src={likeIcon} onClick={() => { this.dislikePlace(p) }} />
+                                        !p.isLiked ? <img className="like-icon" alt="icon" src={dislikeIcon} onClick={() => { this.likePlace(p) }} /> :
+                                            <img className="like-icon" alt="icon" src={likeIcon} onClick={() => { this.dislikePlace(p) }} />
                                     }
                                     <h3 className="place-name label" title={p.name}>{p.name}</h3>
                                     <div className="place-vicinity" title={p.vicinity}>

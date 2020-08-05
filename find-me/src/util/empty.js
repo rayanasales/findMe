@@ -9,7 +9,7 @@ class empty extends React.Component {
     return (
       <div className="empty-content">
         <div className="empty-frags">
-          <img src={ErrorIcon} />
+          <img src={ErrorIcon} alt="icon" />
           <h2>{strings.empty_places}</h2>
         </div>
       </div>

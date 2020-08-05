@@ -88,7 +88,7 @@ class MenuAppBar extends Component {
     handleSearchOnKeyDown(e) {
         const { nearbySearchGoogle } = this.props;
 
-        if (e.keyCode == 13) {
+        if (e.keyCode === 13) {
             nearbySearchGoogle(e.target.value);
         }
     }

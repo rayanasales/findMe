@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { setSession } from "../util/storage/auth";
-import { getUsers, findUser } from "../util/storage/users";
+import { findUser } from "../util/storage/users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './../assets/css/Style.css';
