@@ -4,6 +4,7 @@ import strings from '../util/strings';
 import dislikeIcon from '../assets/images/dislike.jpg';
 import likeIcon from '../assets/images/like.png';
 import MenuAppBar from "./MenuAppBar";
+import { getSession } from "./../util/storage/auth";
 import { like, dislike, getFavorites } from "./../util/storage/places";
 
 class ListPlaces extends React.Component {
@@ -25,6 +26,12 @@ class ListPlaces extends React.Component {
     }
 
     render() {
+        var session = getSession();
+        if (!session) {
+            window.location.href = "http://" + window.location.host + "/";
+            return (null);
+        }
+
         const places = getFavorites();
 
         return (
