@@ -10,7 +10,7 @@ class empty extends React.Component {
       <div className="empty-content">
         <div className="empty-frags">
           <img src={ErrorIcon} alt="icon" />
-          <h2>{strings.empty_places}</h2>
+          <h2>{this.props.message}</h2>
         </div>
       </div>
     );

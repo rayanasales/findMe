@@ -108,7 +108,7 @@ class MenuAppBar extends Component {
                             {strings.locales_recife}
                         </Typography>
                         {
-                            !window.location.href.includes("favorites") ? <div className={classes.search}>
+                            window.location.href.includes("home") ? <div className={classes.search}>
                                 <div className={classes.searchIcon}>
                                     <SearchIcon />
                                 </div>

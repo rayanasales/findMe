@@ -5,6 +5,7 @@ const popular_rating = "Avaliação média: ";
 const locales_recife = "Locais em Recife (Pernambuco)";
 const search_locale = "Pesquisar local..."
 const empty_places = "Nenhum local encontrado";
+const empty_favs_places = "Nenhum local favoritado";
 const start_login = "Efetue seu login";
 const update_profile = "Atualize seus dados";
 const confirm_login = "Entrar";
@@ -24,7 +25,7 @@ const strings = {
     locales_recife, search_locale, empty_places, start_login, back,
     confirm_login, create_account, signup_ask_data, inform_data,
     user_salved_already, user_saved_success, user_not_found, update_profile,
-    update, update_success, user_invalid_email
+    update, update_success, user_invalid_email, empty_favs_places
 };
 
 export default strings;

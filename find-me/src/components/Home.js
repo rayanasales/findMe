@@ -79,7 +79,7 @@ class Home extends React.Component {
       <div className="app">
         <MenuAppBar nearbySearchGoogle={this.nearbySearchGoogle} />
         <div className="content">
-          {nearbyPlaces.length === 0 ? <Empty /> : <ListPlaces places={nearbyPlaces} />}
+          {nearbyPlaces.length === 0 ? <Empty message={strings.empty_places} /> : <ListPlaces places={nearbyPlaces} />}
           <GoogleMap markers={nearbyPlaces} />
         </div>
         <Loading isLoading={isLoading} />
