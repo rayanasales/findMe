@@ -47,7 +47,8 @@ class Home extends React.Component {
         rating: d.rating,
         tags: this.formatTypes(d.types),
         vicinity: d.vicinity,
-        coordinates: d.geometry.location
+        coordinates: d.geometry.location,
+        isLiked: false
       });
     });
 

@@ -1,11 +1,51 @@
 import React from 'react';
 import './../assets/css/Style.css';
 import strings from '../util/strings';
+import dislikeIcon from '../assets/images/dislike.jpg';
+import likeIcon from '../assets/images/like.png';
+import { like, dislike, checkIsLike } from "./../util/storage/places";
 
 class ListPlaces extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      places: props.places
+    };
+
+    this.likePlace = this.likePlace.bind(this);
+    this.dislikePlace = this.dislikePlace.bind(this);
+    this.refreshState = this.refreshState.bind(this);
+  }
+
+  likePlace(p) {
+    like(p);
+    p.isLiked = true;
+    this.refreshState(p);
+  }
+
+  dislikePlace(p) {
+    dislike(p);
+    p.isLiked = false;
+    this.refreshState(p);
+  }
+
+  refreshState(p) {
+    var { places } = this.state;
+
+    for (var i = 0; i < places.length; i++) {
+      if (places[i].name === p.name) {
+        places[i].isLiked = p.isLiked;
+      }
+    }
+
+    this.setState({
+      places: places
+    });
+  }
+
   render() {
-    const { places } = this.props;
+    const { places } = this.state;
 
     return (
       <div className="places-content">
@@ -13,6 +53,10 @@ class ListPlaces extends React.Component {
           places.map((p, key) =>
             <div key={key} className="place-card">
               <div className="place-info">
+                {
+                  !p.isLiked ? <img className="like-icon" src={dislikeIcon} onClick={() => { this.likePlace(p) }} /> :
+                    <img className="like-icon" src={likeIcon} onClick={() => { this.dislikePlace(p) }} />
+                }
                 <h3 className="place-name label" title={p.name}>{p.name}</h3>
                 <div className="place-vicinity" title={p.vicinity}>
                   <span>{strings.address}</span>
