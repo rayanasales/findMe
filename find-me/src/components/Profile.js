@@ -8,16 +8,17 @@ import './../assets/css/Style.css';
 import strings from '../util/strings';
 import { isValidEmail } from '../util/validator';
 
-import { Link } from 'react-router-dom';
-
 class Login extends Component {
 
     constructor() {
         super();
+        this.userSession = JSON.parse(getSession());
+
         this.state = {
-            name: "",
-            email: ""
+            name: (this.userSession ? this.userSession.name : ""),
+            email: (this.userSession ? this.userSession.email : "")
         }
+
         this.onNameChange = this.onNameChange.bind(this);
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -55,8 +56,12 @@ class Login extends Component {
     }
 
     render() {
-        var userSession = JSON.parse(getSession());
-        var currentLoggedUser = findUserByEmail(userSession.email);
+        if (!this.userSession) {
+            window.location.href = "http://" + window.location.host + "/";
+            return (null);
+        }
+
+        var currentLoggedUser = findUserByEmail(this.userSession.email);
 
         return (
             <div className="profile-template">

@@ -1,7 +1,6 @@
 import React from 'react';
 import './../assets/css/Style.css';
 import ErrorIcon from '../assets/images/error-icon.png';
-import strings from './strings';
 
 class empty extends React.Component {
 
