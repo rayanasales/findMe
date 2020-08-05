@@ -1,7 +1,7 @@
 const likedPlacesKey = "LikedPlaces";
 
 function like(place) {
-    var likedPlaces = JSON.parse(localStorage.getItem(likedPlacesKey));
+    var likedPlaces = getFavorites();
 
     if (!likedPlaces) {
         likedPlaces = [];
@@ -12,7 +12,7 @@ function like(place) {
 }
 
 function dislike(place) {
-    var likedPlaces = JSON.parse(localStorage.getItem(likedPlacesKey));
+    var likedPlaces = getFavorites();
     var index = 0;
 
     for (var i = 0; i < likedPlaces.length; i++) {
@@ -26,9 +26,13 @@ function dislike(place) {
 }
 
 function checkIsLike(place) {
-    var likedPlaces = JSON.parse(localStorage.getItem(likedPlacesKey));
+    var likedPlaces = getFavorites();
     var place = likedPlaces.find(x => x.name === place.name);
     return (place != null);
 }
 
-export { like, dislike, checkIsLike };
+function getFavorites() {
+    return JSON.parse(localStorage.getItem(likedPlacesKey));
+}
+
+export { like, dislike, getFavorites, checkIsLike };

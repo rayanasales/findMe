@@ -3,7 +3,7 @@ import './../assets/css/Style.css';
 import strings from '../util/strings';
 import dislikeIcon from '../assets/images/dislike.jpg';
 import likeIcon from '../assets/images/like.png';
-import { like, dislike, checkIsLike } from "./../util/storage/places";
+import { like, dislike } from "./../util/storage/places";
 
 class ListPlaces extends React.Component {
 
@@ -19,14 +19,14 @@ class ListPlaces extends React.Component {
   }
 
   likePlace(p) {
-    like(p);
     p.isLiked = true;
+    like(p);    
     this.refreshState(p);
   }
 
   dislikePlace(p) {
-    dislike(p);
     p.isLiked = false;
+    dislike(p);    
     this.refreshState(p);
   }
 

@@ -3,6 +3,7 @@ import { fade, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
@@ -121,6 +122,13 @@ class MenuAppBar extends Component {
                         </div>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
+                            <Link to="/favorites">
+                                <IconButton aria-label="show 0 new mails" color="inherit">
+                                    <Badge badgeContent={0} color="secondary">
+                                        <FavoriteIcon />
+                                    </Badge>
+                                </IconButton>
+                            </Link>
                             <Link to="/profile">
                                 <IconButton aria-label="show 0 new mails" color="inherit">
                                     <Badge badgeContent={0} color="secondary">

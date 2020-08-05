@@ -9,6 +9,7 @@ import ListPlaces from "./ListPlaces";
 import GoogleMap from "./GoogleMap";
 import MenuAppBar from "./MenuAppBar";
 import { getSession } from "./../util/storage/auth";
+import { checkIsLike } from "./../util/storage/places";
 
 class Home extends React.Component {
 
@@ -48,7 +49,7 @@ class Home extends React.Component {
         tags: this.formatTypes(d.types),
         vicinity: d.vicinity,
         coordinates: d.geometry.location,
-        isLiked: false
+        isLiked: checkIsLike(d)
       });
     });
 

@@ -1,4 +1,4 @@
-const place_type_default_param = "bank";
+const place_type_default_param = "gym";
 const map_zoom = 15;
 const address = "Endereço: "
 const popular_rating = "Avaliação média: ";
