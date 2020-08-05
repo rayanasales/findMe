@@ -1,5 +1,6 @@
 import strings from "../strings";
 import CryptoJS from "crypto-js";
+import { getSession } from "./auth";
 
 const SECRET_KEY = "secret-key-find-me-16-56";
 const USERS_LIST_KEY = "UsersList";
@@ -83,4 +84,74 @@ function updateUser(oldEmail, newUser) {
     return newUser;
 }
 
-export { saveUser, findUser, findUserByEmail, updateUser };
+function getAllUsers() {
+    return JSON.parse(localStorage.getItem(USERS_LIST_KEY));
+}
+
+// -----------------------
+
+function getCurrentUserData() {
+    var userSession = JSON.parse(getSession());
+    var emailCurrentUser = userSession.email;
+    var allUsers = getAllUsers();
+    var user = allUsers.find(x => x.email === emailCurrentUser);
+
+    return user;
+}
+
+function insertFavoritePlace(place) {
+    var user = getCurrentUserData();
+
+    if (!user.favoritePlaces) {
+        user.favoritePlaces = [];
+    }
+    user.favoritePlaces.push(place);
+    updateUser(user.email, user);
+
+    return;
+}
+
+function removeFavoritePlace(place) {
+    var user = getCurrentUserData();
+
+    // if user has only one fav place
+    if (user.favoritePlaces.length === 1) {
+
+        user.favoritePlaces = [];
+        updateUser(user.email, user);
+        return;
+    }
+
+    // else if user has many favs
+    var likedPlaces = user.favoritePlaces;
+    var index = 0;
+
+    for (var i = 0; i < likedPlaces.length; i++) {
+        if (likedPlaces[i].name === place.name) {
+            index = i;
+        }
+    }
+
+    likedPlaces.splice(index, 1);
+    user.favoritePlaces = likedPlaces;
+    updateUser(user.email, user);
+}
+
+function checkIsFavovitePlaceFromCurrentUser(place) {
+    var likedPlaces = getCurrentUserFavoritesPlaces();
+    if (!likedPlaces) {
+        return false;
+    }
+    place = likedPlaces.find(x => x.name === place.name);
+    return (place != null);
+}
+
+function getCurrentUserFavoritesPlaces() {
+    var user = getCurrentUserData();
+    return user.favoritePlaces;
+}
+
+export {
+    saveUser, findUser, findUserByEmail, updateUser, insertFavoritePlace, removeFavoritePlace,
+    checkIsFavovitePlaceFromCurrentUser, getCurrentUserFavoritesPlaces
+};

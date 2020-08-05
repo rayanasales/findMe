@@ -6,7 +6,8 @@ import likeIcon from '../assets/images/like.png';
 import Empty from '../util/empty';
 import MenuAppBar from "./MenuAppBar";
 import { getSession } from "./../util/storage/auth";
-import { like, dislike, getFavorites } from "./../util/storage/places";
+import { getCurrentUserFavoritesPlaces } from "./../util/storage/users";
+import { insertFavoritePlace, removeFavoritePlace } from "./../util/storage/users";
 import GoogleMap from "./GoogleMap";
 
 class ListPlaces extends React.Component {
@@ -14,7 +15,7 @@ class ListPlaces extends React.Component {
     constructor() {
         super();
         this.state = {
-            places: (getFavorites() || [])
+            places: (getCurrentUserFavoritesPlaces() || [])
         };
         this.likePlace = this.likePlace.bind(this);
         this.dislikePlace = this.dislikePlace.bind(this);
@@ -23,19 +24,19 @@ class ListPlaces extends React.Component {
 
     likePlace(p) {
         p.isLiked = true;
-        like(p);
+        insertFavoritePlace(p);
         this.refreshState();
     }
 
     dislikePlace(p) {
         p.isLiked = false;
-        dislike(p);
+        removeFavoritePlace(p);
         this.refreshState();
     }
 
     refreshState() {
         this.setState({
-            places: getFavorites()
+            places: getCurrentUserFavoritesPlaces()
         });
     }
 
