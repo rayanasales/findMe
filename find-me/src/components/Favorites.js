@@ -12,28 +12,48 @@ class ListPlaces extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            places: getFavorites()
+        };
         this.likePlace = this.likePlace.bind(this);
         this.dislikePlace = this.dislikePlace.bind(this);
+        this.refreshState = this.refreshState.bind(this);
     }
 
+    // componentDidUpdate() {
+    //     if (this.state.places !== this.props.places) {
+    //         this.setState({
+    //             places: this.props.places
+    //         });
+    //     }
+    // }
+
     likePlace(p) {
+        p.isLiked = true;
         like(p);
-        this.render();
+        this.refreshState();
     }
 
     dislikePlace(p) {
+        p.isLiked = false;
         dislike(p);
-        this.render();
+        this.refreshState();
+    }
+
+    refreshState() {
+        this.setState({
+            places: getFavorites()
+        });
     }
 
     render() {
+        const { places } = this.state;
+
         var session = getSession();
         if (!session) {
             window.location.href = "http://" + window.location.host + "/";
             return (null);
         }
-
-        const places = getFavorites();
 
         return (
             <div className="app">

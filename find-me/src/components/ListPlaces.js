@@ -19,7 +19,7 @@ class ListPlaces extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.state.places !== this.props.places) {
+    if (this.state.places !== this.props.places) {
       this.setState({
         places: this.props.places
       });
@@ -28,13 +28,13 @@ class ListPlaces extends React.Component {
 
   likePlace(p) {
     p.isLiked = true;
-    like(p);    
+    like(p);
     this.refreshState(p);
   }
 
   dislikePlace(p) {
     p.isLiked = false;
-    dislike(p);    
+    dislike(p);
     this.refreshState(p);
   }
 
