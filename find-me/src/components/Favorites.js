@@ -14,7 +14,7 @@ class ListPlaces extends React.Component {
     constructor() {
         super();
         this.state = {
-            places: getFavorites()
+            places: (getFavorites() || [])
         };
         this.likePlace = this.likePlace.bind(this);
         this.dislikePlace = this.dislikePlace.bind(this);
