@@ -27,6 +27,9 @@ function dislike(place) {
 
 function checkIsLike(place) {
     var likedPlaces = getFavorites();
+    if (!likedPlaces) {
+        return false;
+    }
     var place = likedPlaces.find(x => x.name === place.name);
     return (place != null);
 }
