@@ -3,6 +3,7 @@ import { fade, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -106,22 +107,31 @@ class MenuAppBar extends Component {
                         <Typography className={classes.title} variant="h6" noWrap>
                             {strings.locales_recife}
                         </Typography>
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon />
-                            </div>
-                            <InputBase
-                                placeholder={strings.search_locale}
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                onKeyDown={this.handleSearchOnKeyDown}
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </div>
+                        {
+                            !window.location.href.includes("favorites") ? <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon />
+                                </div>
+                                <InputBase
+                                    placeholder={strings.search_locale}
+                                    classes={{
+                                        root: classes.inputRoot,
+                                        input: classes.inputInput,
+                                    }}
+                                    onKeyDown={this.handleSearchOnKeyDown}
+                                    inputProps={{ 'aria-label': 'search' }}
+                                />
+                            </div> : null
+                        }
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
+                            <Link to="/home">
+                                <IconButton aria-label="show 0 new mails" color="inherit">
+                                    <Badge badgeContent={0} color="secondary">
+                                        <HomeIcon />
+                                    </Badge>
+                                </IconButton>
+                            </Link>
                             <Link to="/favorites">
                                 <IconButton aria-label="show 0 new mails" color="inherit">
                                     <Badge badgeContent={0} color="secondary">
