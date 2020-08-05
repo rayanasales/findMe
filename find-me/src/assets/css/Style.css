@@ -250,3 +250,12 @@ svg {
   float: right;
   margin-right: 5px;
 }
+
+.profile-form-title {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.profile-update-button-content {
+  margin-top: 45px;
+}

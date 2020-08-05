@@ -20,14 +20,6 @@ class ListPlaces extends React.Component {
         this.refreshState = this.refreshState.bind(this);
     }
 
-    // componentDidUpdate() {
-    //     if (this.state.places !== this.props.places) {
-    //         this.setState({
-    //             places: this.props.places
-    //         });
-    //     }
-    // }
-
     likePlace(p) {
         p.isLiked = true;
         like(p);

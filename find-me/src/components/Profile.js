@@ -3,6 +3,7 @@ import { getSession, refreshSession } from "../util/storage/auth";
 import { findUserByEmail, updateUser } from "../util/storage/users";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import MenuAppBar from "./MenuAppBar";
 import './../assets/css/Style.css';
 import strings from '../util/strings';
 import { isValidEmail } from '../util/validator';
@@ -59,8 +60,9 @@ class Login extends Component {
 
         return (
             <div className="profile-template">
+                <MenuAppBar />
                 <div className="login-container">
-                    <h1 className="form-title">{strings.update_profile}</h1>
+                    <h1 className="profile-form-title">{strings.update_profile}</h1>
                     <div className="text-field-login">
                         <TextField
                             required
@@ -83,12 +85,7 @@ class Login extends Component {
                             defaultValue={currentLoggedUser.email}
                         />
                     </div>
-                    <div className="login-button-content">
-                        <Link to="/home">
-                            {strings.back}
-                        </Link>
-                    </div>
-                    <div className="login-button-content">
+                    <div className="profile-update-button-content">
                         <Button id="login-button" variant="contained" color="primary" onClick={this.onSubmitForm}>
                             {strings.update}
                         </Button>
