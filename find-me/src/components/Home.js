@@ -29,6 +29,11 @@ class Home extends React.Component {
   }
 
   nearbySearchGoogle(placeType) {
+    this.setState({
+      isLoading: true,
+      nearbyPlaces: []
+    });
+
     api.nearbySearch(CONSTANTS.RECIFE_CORDS_LONG.lat, CONSTANTS.RECIFE_CORDS_LONG.lgn, CONSTANTS.RADIUS, placeType).then((dataJson) => {
       return dataJson.json().then((data) => {
         this.formatData(data);
@@ -75,11 +80,13 @@ class Home extends React.Component {
       return (null);
     }
 
+    var message = (isLoading ? strings.searching : strings.empty_places);
+
     return (
       <div className="app">
         <MenuAppBar nearbySearchGoogle={this.nearbySearchGoogle} />
         <div className="content">
-          {nearbyPlaces.length === 0 ? <Empty message={strings.empty_places} /> : <ListPlaces places={nearbyPlaces} />}
+          {nearbyPlaces.length === 0 ? <Empty message={message} /> : <ListPlaces places={nearbyPlaces} />}
           <GoogleMap markers={nearbyPlaces} />
         </div>
         <Loading isLoading={isLoading} />

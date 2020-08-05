@@ -1,7 +1,8 @@
 const userDataKey = "CurrentLoggedUser";
 
-function setSession(email, token) {
+function setSession(name, email, token) {
     var data = {
+        name: name,
         email: email,
         token: token
     };
@@ -18,7 +19,7 @@ function getSession() {
 
 function refreshSession(newUser) {
     var token = JSON.parse(getSession()).token;
-    setSession(newUser.email, token);
+    setSession(newUser.name, newUser.email, token);
 }
 
 export { setSession, clearSession, getSession, refreshSession };

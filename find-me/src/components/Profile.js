@@ -39,6 +39,11 @@ class Login extends Component {
     onSubmitForm() {
         const { name, email } = this.state;
 
+        if (!name || !email) {
+            alert(strings.user_missing_fields);
+            return;
+        }
+
         if (!isValidEmail(email)) {
             alert(strings.user_invalid_email);
             return;
@@ -62,7 +67,7 @@ class Login extends Component {
         }
 
         var currentLoggedUser = findUserByEmail(this.userSession.email);
-
+     
         return (
             <div className="profile-template">
                 <MenuAppBar />

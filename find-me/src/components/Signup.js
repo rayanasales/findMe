@@ -62,7 +62,7 @@ class Signup extends Component {
 
         if (message === strings.user_saved_success) {
             var token = api.login(email, password).token;
-            setSession(email, token);
+            setSession(name, email, token);
             window.location.href = "http://" + window.location.host + "/home";
         } else {
             alert(strings.user_salved_already);
