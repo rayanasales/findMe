@@ -14,8 +14,9 @@ class ListPlaces extends React.Component {
 
     constructor() {
         super();
+        this.session = getSession();
         this.state = {
-            places: (getCurrentUserFavoritesPlaces() || [])
+            places: (!this.session ? [] : (getCurrentUserFavoritesPlaces() || []))
         };
         this.likePlace = this.likePlace.bind(this);
         this.dislikePlace = this.dislikePlace.bind(this);
@@ -43,8 +44,7 @@ class ListPlaces extends React.Component {
     render() {
         const { places } = this.state;
 
-        var session = getSession();
-        if (!session) {
+        if (!this.session) {
             window.location.href = "http://" + window.location.host + "/";
             return (null);
         }
