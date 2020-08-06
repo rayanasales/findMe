@@ -62,9 +62,13 @@ function decryptPassword(encrypted) {
     return decrypt;
 }
 
-function updateUser(oldEmail, newUser) {
+function updateUser(oldEmail, newUser, cameFromProfile) {
     var user = findUserByEmail(oldEmail);
     newUser.password = user.password;
+
+    if (cameFromProfile) {
+        newUser.favoritePlaces = user.favoritePlaces;
+    }
 
     var userList = JSON.parse(localStorage.getItem(USERS_LIST_KEY));
     var index = 0;
@@ -106,7 +110,7 @@ function insertFavoritePlace(place) {
         user.favoritePlaces = [];
     }
     user.favoritePlaces.push(place);
-    updateUser(user.email, user);
+    updateUser(user.email, user, false);
 
     return;
 }
@@ -118,7 +122,7 @@ function removeFavoritePlace(place) {
     if (user.favoritePlaces.length === 1) {
 
         user.favoritePlaces = [];
-        updateUser(user.email, user);
+        updateUser(user.email, user, false);
         return;
     }
 
@@ -134,7 +138,7 @@ function removeFavoritePlace(place) {
 
     likedPlaces.splice(index, 1);
     user.favoritePlaces = likedPlaces;
-    updateUser(user.email, user);
+    updateUser(user.email, user, false);
 }
 
 function checkIsFavovitePlaceFromCurrentUser(place) {

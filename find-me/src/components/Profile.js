@@ -55,7 +55,7 @@ class Login extends Component {
             email: email
         }
 
-        var newUser = updateUser(currentEmail, data);
+        var newUser = updateUser(currentEmail, data, true);
         refreshSession(newUser);
         alert(strings.update_success);
     }
