@@ -1,4 +1,4 @@
-const GOOGLE_API_PLACES_KEY = "AIzaSyBTo1qr8ftqlqSkLhVg_rdHpKbslJxdMas";
+const GOOGLE_API_PLACES_KEY = "AIzaSyAxWcsq9gLRiwjHLLMRtWUu7oauPuwl2z4";
 
 const RECIFE_CORDS_LONG = {
     lat: -8.037610,
